@@ -4,13 +4,13 @@ from fastapi import FastAPI, HTTPException
 from ojrson_response import ORJSONResponse
 from functions import generate_news, is_valid_date
 
-app = FastAPI(default_response_class=ORJSONResponse)
+api = FastAPI(default_response_class=ORJSONResponse)
 
-@app.get("/")
+@api.get("/")
 async def root():
     raise HTTPException(status_code=401, detail="Requests for root are not supported!")
 
-@app.get("/articles/")
+@api.get("/articles/")
 async def read_item(phrases : str = "",
                     lang: str = global_vars.DEFAULT_LANG,
                     start: str = global_vars.DEFAULT_START,
