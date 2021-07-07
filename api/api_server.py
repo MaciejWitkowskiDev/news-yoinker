@@ -15,7 +15,9 @@ app = FastAPI()
 def is_valid_date(date : str):
     return bool(regex_match(VALID_DATE_REGEX, date))
 
-def generate_news(gn : GoogleNews):
+def generate_news(phrases : list, gn : GoogleNews):
+    for phrase in phrases:
+        gn.get_news(phrase)
     pass
 
 @app.get("/")
@@ -35,5 +37,5 @@ async def read_item(phrases : list = [],
         raise HTTPException(status_code=410, detail=f"Startdate {start} is invalid. Please provide a correct date in dd/mm/rrrr format.")
     if not is_valid_date(end):
         raise HTTPException(status_code=410, detail=f"Enddate {end} is invalid. Please provide a correct date in dd/mm/rrrr format.")
-    gn = GoogleNews(lang = lang, start = start, end = end)
-    return generate_news(gn)
+    gn_object = GoogleNews(lang = lang, start = start, end = end)
+    return generate_news(phrases, gn_object)
