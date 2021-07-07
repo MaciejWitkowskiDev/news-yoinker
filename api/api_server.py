@@ -1,19 +1,13 @@
 #Imports
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
 from GoogleNews import GoogleNews
 from requests import get as requests_get
 from re import match as regex_match
-from orjson import dumps as orjson_dumps
 from typing import Any
-
+from ojrson_response import ORJSONResponse
 import global_vars
 
-class ORJSONResponse(JSONResponse):
-    media_type = "application/json"
 
-    def render(self, content: Any) -> bytes:
-        return orjson_dumps(content)
 
 app = FastAPI(default_response_class=ORJSONResponse)
 
