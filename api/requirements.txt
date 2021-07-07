@@ -8,6 +8,7 @@ fastapi==0.66.0
 GoogleNews==1.5.8
 h11==0.12.0
 idna==2.10
+orjson==3.5.4
 pycountry==20.7.3
 pydantic==1.8.2
 python-dateutil==2.8.1
