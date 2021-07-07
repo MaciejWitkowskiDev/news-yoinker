@@ -1,12 +1,11 @@
 #Imports
-from fastapi import FastAPI, HTTPException
-from GoogleNews import GoogleNews
-from requests import get as requests_get
-from re import match as regex_match
-from typing import Any
-from ojrson_response import ORJSONResponse
 import global_vars
-
+from fastapi import FastAPI, HTTPException
+from requests import get as requests_get
+from ojrson_response import ORJSONResponse
+from GoogleNews import GoogleNews
+from typing import Any
+from re import match as regex_match
 
 
 app = FastAPI(default_response_class=ORJSONResponse)
